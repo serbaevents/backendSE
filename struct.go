@@ -1,5 +1,7 @@
 package gobd
 
+import "time"
+
 // type GeometryPolygon struct {
 // 	Coordinates [][][]float64 `json:"coordinates" bson:"coordinates"`
 // 	Type        string        `json:"type" bson:"type"`
@@ -27,15 +29,14 @@ package gobd
 // 	Geometry   GeometryPolygon `json:"geometry" bson:"geometry"`
 // }
 
-// type Geometry struct {
-// 	Coordinates interface{} `json:"coordinates" bson:"coordinates"`
-// 	Type        string      `json:"type" bson:"type"`
-// }
-// type GeoJson struct {
-// 	Type       string     `json:"type" bson:"type"`
-// 	Properties Properties `json:"properties" bson:"properties"`
-// 	Geometry   Geometry   `json:"geometry" bson:"geometry"`
-// }
+type Geometry struct {
+	Coordinates interface{} `json:"coordinates" bson:"coordinates"`
+	Type        string      `json:"type" bson:"type"`
+}
+type GeoJson struct {
+	Type       string     `json:"type" bson:"type"`
+	Properties Properties `json:"properties" bson:"properties"`
+}
 
 type Properties struct {
 	Name string `json:"name" bson:"name"`
@@ -64,4 +65,24 @@ type User struct {
 	Username string `json:"username" bson:"username"`
 	Password string `json:"password" bson:"password"`
 	// Email		 string             	`bson:"email,omitempty" json:"email,omitempty"`
+}
+type Admin struct {
+	Username string `json:"username" bson:"username"`
+	Password string `json:"password" bson:"password"`
+	Role     string `json:"role" bson:"role"`
+
+}
+
+type Shuttle struct {
+	Username string `json:"username" bson:"username"`
+	jamgo string `json:"password" bson:"password"`
+	jamout     string `json:"role" bson:"role"`
+	Role     string `json:"role" bson:"role"`
+}
+
+type Bis struct {
+	NoKursi string `json:"nokursi" bson:"nokursi"`
+	Jemputan string `json:"jemputan" bson:"jemputan"`
+	JamGo	time.Time	`json:"jamgo" bson:"jamgo"`
+    JamOut time.Time `json:"jamout" bson:"jamout"`
 }

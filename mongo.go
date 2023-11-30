@@ -1,12 +1,13 @@
 package gobd
 
 import (
-	"os"
 	"context"
+	"os"
+	"time"
 
 	"github.com/aiteung/atdb"
-	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func GetConnectionMongo(MongoString, dbname string) *mongo.Database {
@@ -35,6 +36,17 @@ func InsertDataLonlat(MongoConn *mongo.Database, colname string, coordinate []fl
 	req.Coordinates = coordinate
 	req.Name = name
 	req.Volume = volume
+
+	ins := atdb.InsertOneDoc(MongoConn, colname, req)
+	return ins
+}
+
+func InsertDatabisini(MongoConn *mongo.Database, colname string, jamgo	time.Time,	jamout time.Time, jemputan string, nokursi string) (InsertedID interface{}) {
+	req := new(Bis)
+	req.NoKursi = nokursi
+	req.Jemputan = jemputan
+	req.JamGo =	jamgo 
+	req.JamOut = jamout
 
 	ins := atdb.InsertOneDoc(MongoConn, colname, req)
 	return ins
