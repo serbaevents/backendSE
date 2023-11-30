@@ -29,25 +29,30 @@ import "time"
 // 	Geometry   GeometryPolygon `json:"geometry" bson:"geometry"`
 // }
 
-type Geometry struct {
-	Coordinates interface{} `json:"coordinates" bson:"coordinates"`
-	Type        string      `json:"type" bson:"type"`
-}
-type GeoJson struct {
-	Type       string     `json:"type" bson:"type"`
+// type Geometry struct {
+// 	Coordinates interface{} `json:"coordinates" bson:"coordinates"`
+// 	Type        string      `json:"type" bson:"type"`
+// }
+// type GeoJson struct {
+// 	Type       string     `json:"type" bson:"type"`
+// 	Properties Properties `json:"properties" bson:"properties"`
+// }
+
+ type Properties struct {
+ 	NamaBis string `json:"name" bson:"name"`
+ }
+
+// type LonLatProperties struct {
+// 	Type        string    `json:"type" bson:"type"`
+// 	Name        string    `json:"name" bson:"name"`
+// 	Volume      string    `json:"volume" bson:"volume"`
+// 	Coordinates []float64 `json:"coordinates" bson:"coordinates"`
+// }
+
+ type bisdata struct {
+ 	Type       string     `json:"type" bson:"type"`
 	Properties Properties `json:"properties" bson:"properties"`
-}
-
-type Properties struct {
-	Name string `json:"name" bson:"name"`
-}
-
-type LonLatProperties struct {
-	Type        string    `json:"type" bson:"type"`
-	Name        string    `json:"name" bson:"name"`
-	Volume      string    `json:"volume" bson:"volume"`
-	Coordinates []float64 `json:"coordinates" bson:"coordinates"`
-}
+ }
 
 type Credents struct {
 	Status  string `json:"status" bson:"status"`

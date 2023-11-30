@@ -25,21 +25,21 @@ func IsPasswordValid(mongoconn *mongo.Database, collection string, userdata User
 	return CheckPasswordHash(userdata.Password, res.Password)
 }
 
-func GetAllData(MongoConnect *mongo.Database, colname string) []GeoJson {
-	data := atdb.GetAllDoc[[]GeoJson](MongoConnect, colname)
+func GetAllData(MongoConnect *mongo.Database, colname string) []bisdata {
+	data := atdb.GetAllDoc[[]bisdata](MongoConnect, colname)
 	return data
 }
 
-func InsertDataLonlat(MongoConn *mongo.Database, colname string, coordinate []float64, name, volume, tipe string) (InsertedID interface{}) {
-	req := new(LonLatProperties)
-	req.Type = tipe
-	req.Coordinates = coordinate
-	req.Name = name
-	req.Volume = volume
+// func InsertDataLonlat(MongoConn *mongo.Database, colname string, coordinate []float64, name, volume, tipe string) (InsertedID interface{}) {
+// 	req := new(LonLatProperties)
+// 	req.Type = tipe
+// 	req.Coordinates = coordinate
+// 	req.Name = name
+// 	req.Volume = volume
 
-	ins := atdb.InsertOneDoc(MongoConn, colname, req)
-	return ins
-}
+// 	ins := atdb.InsertOneDoc(MongoConn, colname, req)
+// 	return ins
+// }
 
 func InsertDatabisini(MongoConn *mongo.Database, colname string, jamgo	time.Time,	jamout time.Time, jemputan string, nokursi string) (InsertedID interface{}) {
 	req := new(Bis)
