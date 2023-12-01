@@ -41,7 +41,7 @@ func GetAllData(MongoConnect *mongo.Database, colname string) []Bis {
 // 	return ins
 // }
 
-func InsertDatabisini(MongoConn *mongo.Database, colname string, jamgo	time.Time,	jamout time.Time, jemputan string, nokursi string) (InsertedID interface{}) {
+func InsertDatabisini(MongoConn *mongo.Database, colname string, jamgo	time.Time, jamout time.Time, nokursi string, jemputan string) (InsertedID interface{}) {
 	req := new(Bis)
 	req.NoKursi = nokursi
 	req.Jemputan = jemputan
