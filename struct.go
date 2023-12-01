@@ -80,7 +80,7 @@ type Admin struct {
 
 type Shuttle struct {
 	Username string `json:"username" bson:"username"`
-	jamgo string `json:"password" bson:"password"`
+	jamgo 	string `json:"password" bson:"password"`
 	jamout     string `json:"role" bson:"role"`
 	Role     string `json:"role" bson:"role"`
 }

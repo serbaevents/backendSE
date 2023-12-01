@@ -25,8 +25,8 @@ func IsPasswordValid(mongoconn *mongo.Database, collection string, userdata User
 	return CheckPasswordHash(userdata.Password, res.Password)
 }
 
-func GetAllData(MongoConnect *mongo.Database, colname string) []bisdata {
-	data := atdb.GetAllDoc[[]bisdata](MongoConnect, colname)
+func GetAllData(MongoConnect *mongo.Database, colname string) []Bis {
+	data := atdb.GetAllDoc[[]Bis](MongoConnect, colname)
 	return data
 }
 
