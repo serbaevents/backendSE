@@ -101,15 +101,6 @@ func TestGetUserByAdmin(t *testing.T) {
 				fmt.Println(datapengguna)
 			}
 		}
-		if data.Role == "driver" {
-			datadriver, err := module.GetDriverFromAkun(data.ID, db)
-			if err != nil {
-				t.Errorf("Error getting document: %v", err)
-			} else {
-				datadriver.Akun = data
-				fmt.Println(datadriver)
-			}
-		}
 	}
 }
 
@@ -123,23 +114,6 @@ func TestSignUpPengguna(t *testing.T) {
 	doc.Akun.Email = "sahjatea@gmail.com"
 	doc.Akun.Password = "sahijabandung"
 	err := module.SignUpPengguna(db, doc)
-	if err != nil {
-		t.Errorf("Error inserting document: %v", err)
-	} else {
-		fmt.Println("Data berhasil disimpan dengan nama :", doc.NamaLengkap)
-	}
-}
-
-func TestSignUpDriver(t *testing.T) {
-	var doc model.Driver
-	doc.NamaLengkap = "Wawan Setiawan"
-	doc.JenisKelamin = "Laki-laki"
-	doc.NomorHP = "081292308273"
-	doc.Alamat = "Jalan pasanggrahan No 01"
-	doc.PlatBis = "D 1234 YBT"
-	doc.Akun.Email = "wawan@gmail.com"
-	doc.Akun.Password = "driverwawan"
-	err := module.SignUpDriver(db, doc)
 	if err != nil {
 		t.Errorf("Error inserting document: %v", err)
 	} else {
@@ -202,24 +176,6 @@ func TestWatoken(t *testing.T) {
 	fmt.Println("isi : ", body, err)
 }
 
-func TestInsertOneOrder(t *testing.T) {
-	var doc model.OrderTiket
-	doc.Event = "Event coldplay"
-	doc.Quantity = "1"
-	doc.TotalCost = "Rp 1000.000"
-	doc.Status = "Pending"
-	if doc.Quantity == "" || doc.TotalCost == "" || doc.Status == "" {
-		t.Errorf("mohon untuk melengkapi data")
-	} else {
-		insertedID, err := module.InsertOneDoc(db, "order", doc)
-		if err != nil {
-			t.Errorf("Error inserting document: %v", err)
-			fmt.Println("Data tidak berhasil disimpan")
-		} else {
-			fmt.Println("Data berhasil disimpan dengan id :", insertedID.Hex())
-		}
-	}
-}
 
 // test Tiket
 func TestInsertTiket(t *testing.T) {
@@ -315,22 +271,6 @@ func TestGetTiketFromID(t *testing.T) {
 		t.Errorf("Error get Tiket : %v", err)
 	} else {
 		fmt.Println(tiket)
-	}
-}
-
-// order
-func TestGetOrderFromID(t *testing.T) {
-	conn := module.MongoConnect("MONGOSTRING", "serbaevent_db")
-	id := "6569a027a943657839880669"
-	objectId, err := primitive.ObjectIDFromHex(id)
-	if err != nil {
-		t.Fatalf("error converting id to objectID: %v", err)
-	}
-	order, err := module.GetOrderFromID(objectId, conn)
-	if err != nil {
-		t.Errorf("Error get order : %v", err)
-	} else {
-		fmt.Println(order)
 	}
 }
 

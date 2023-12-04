@@ -54,15 +54,7 @@ type Admin struct {
 	Akun User               `bson:"akun,omitempty" json:"akun,omitempty"`
 }
 
-type Driver struct {
-	ID           primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
-	NamaLengkap  string             `bson:"namalengkap,omitempty" json:"namalengkap,omitempty"`
-	JenisKelamin string             `bson:"jeniskelamin,omitempty" json:"jeniskelamin,omitempty"`
-	NomorHP      string             `bson:"nomorhp,omitempty" json:"nomorhp,omitempty"`
-	Alamat       string             `bson:"alamat,omitempty" json:"alamat,omitempty"`
-	PlatBis      string             `bson:"platbis,omitempty" json:"platbis,omitempty"`
-	Akun         User               `bson:"akun,omitempty" json:"akun,omitempty"`
-}
+
 
 type Tiket struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
@@ -72,16 +64,6 @@ type Tiket struct {
 	Harga       string             `json:"harga,omitempty" bson:"harga,omitempty"`
 }
 
-type OrderTiket struct {
-	ID          primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
-	Pengguna    Pengguna           `bson:"pengguna,omitempty" json:"pengguna,omitempty"`
-	Driver      Driver             `bson:"driver,omitempty" json:"driver,omitempty"`
-	Tiket    	Tiket           `bson:"tiket,omitempty" json:"tiket,omitempty"`
-	Event string             `bson:"even,omitempty" json:"even,omitempty"`
-	Quantity    string             `bson:"quantity,omitempty" json:"quantity,omitempty"`
-	TotalCost   string             `bson:"total_cost,omitempty" json:"total_cost,v"`
-	Status      string             `bson:"status,omitempty" json:"status,omitempty"`
-}
 
 type Credential struct {
 	Status  bool   `json:"status" bson:"status"`
